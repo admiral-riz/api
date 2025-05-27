@@ -2,6 +2,7 @@
 
 define('host', 'localhost');
 define('user', 'root');
+// define('user', 'root');
 define('password', '');
 define('database', 'uts-uasmobile2');
 
