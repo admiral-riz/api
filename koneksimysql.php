@@ -1,10 +1,15 @@
 <?php
 
-define('host', 'localhost');
-define('user', 'root');
+// define('host', 'localhost');
 // define('user', 'root');
-define('password', '');
-define('database', 'uts-uasmobile2');
+// // define('user', 'root');
+// define('password', '');
+// define('database', 'uts-uasmobile2');
+
+define('host', 'localhost');
+define('user', 'androidrisky');
+define('password', 'Risky123');
+define('database', 'androidrisky');
 
 $conn = mysqli_connect(host, user, password, database);
 if (!$conn) {
