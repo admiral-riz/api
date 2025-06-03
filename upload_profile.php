@@ -11,7 +11,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['email']) && isset($_F
     $email = $conn->real_escape_string($_POST['email']);
     $foto = $_FILES['foto'];
 
-    $uploadDir = "images/avatar/";
+    $uploadDir = "img/avatar/";
     $ext = pathinfo($foto['name'], PATHINFO_EXTENSION);
     $filename = uniqid() . "_" . date("YmdHis") . "." . strtolower($ext);
     $targetFile = $uploadDir . $filename;
@@ -22,13 +22,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['email']) && isset($_F
     }
 
     if (move_uploaded_file($foto['tmp_name'], $targetFile)) {
-        $sql = "UPDATE user SET foto = ? WHERE email = ?";
+        $sql = "UPDATE tbl_pelanggan SET foto = ? WHERE email = ?";
         $stmt = $conn->prepare($sql);
         $stmt->bind_param("ss", $filename, $email);
         if ($stmt->execute()) {
             $response['result'] = 1;
             $response['message'] = "Foto berhasil diunggah";
-            $response['url'] = "https://android.umrmaulana.my.id/api/" . $targetFile;
+            $response['url'] = "https://rizky.umrmaulana.my.id/api/" . $targetFile;
         } else {
             $response['message'] = "Gagal memperbarui database";
         }
