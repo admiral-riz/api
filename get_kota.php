@@ -1,11 +1,17 @@
 <?php
-// Set header agar browser/aplikasi tahu bahwa responsnya adalah JSON
 header('Content-Type: application/json');
+
+$province_id = isset($_GET['province_id']) ? $_GET['province_id'] : ''; // Tangkap province_id dari URL
 
 $curl = curl_init();
 
+$url = "https://api.rajaongkir.com/starter/city";
+if (!empty($province_id)) {
+    $url .= "?province=" . $province_id; // Tambahkan parameter province jika ada
+}
+
 curl_setopt_array($curl, array(
-    CURLOPT_URL => "https://api.rajaongkir.com/starter/province",
+    CURLOPT_URL => $url, // Gunakan URL yang sudah dimodifikasi
     CURLOPT_RETURNTRANSFER => true,
     CURLOPT_ENCODING => "",
     CURLOPT_MAXREDIRS => 10,
@@ -22,10 +28,7 @@ $err = curl_error($curl);
 curl_close($curl);
 
 if ($err) {
-    // Jika ada error cURL, kembalikan error dalam format JSON
     echo json_encode(['error' => 'cURL Error #: ' . $err]);
 } else {
-    // Langsung cetak respons JSON dari RajaOngkir
-    // $response sudah dalam bentuk JSON, jadi tidak perlu di-decode lalu di-encode lagi
     echo $response;
 }
