@@ -33,7 +33,7 @@ try {
     $stmt = $conn->prepare("
         SELECT od.*, p.nama as product_name, p.gambar as product_image
         FROM tbl_order_detail od
-        JOIN tbl_produk p ON od.kode_brg = p.kode
+        JOIN tbl_product p ON od.kode_brg = p.kode
         WHERE od.trans_id = ?
     ");
     $stmt->bind_param("i", $orderId);
