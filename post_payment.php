@@ -1,6 +1,6 @@
 <?php
 header("Content-Type: application/json");
-require_once 'koneksimysql.php';
+include 'koneksimysql.php';
 
 $response = ['success' => false, 'message' => ''];
 
