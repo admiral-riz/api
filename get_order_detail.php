@@ -31,7 +31,7 @@ try {
 
     // Get order items
     $stmt = $conn->prepare("
-        SELECT od.*, p.nama as product_name, p.gambar as product_image
+        SELECT od.*, p.merk as product_name, p.foto as product_image
         FROM tbl_order_detail od
         JOIN tbl_product p ON od.kode_brg = p.kode
         WHERE od.trans_id = ?
