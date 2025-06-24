@@ -16,7 +16,7 @@ try {
     $stmt = $conn->prepare("
         SELECT o.*, u.nama as customer_name, u.telp as customer_phone
         FROM tbl_order o
-        JOIN tbl_user u ON o.email = u.email
+        JOIN tbl_pelanggan u ON o.email = u.email
         WHERE o.trans_id = ?
     ");
     $stmt->bind_param("i", $orderId);
