@@ -2,8 +2,8 @@
 header('Content-Type: application/json');
 include 'koneksimysql.php';
 
-// Ambil semua data produk dan urutkan berdasarkan view_count dari yang tertinggi
-$query = "SELECT * FROM tbl_product ORDER BY hargajual DESC LIMIT 6";
+// Ambil semua data produk dan urutkan berdasarkan harga jual termurah
+$query = "SELECT * FROM tbl_product ORDER BY hargajual ASC LIMIT 6";
 $result = $conn->query($query);
 
 $products = array();
