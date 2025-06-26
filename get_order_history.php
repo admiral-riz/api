@@ -20,7 +20,7 @@ try {
         LEFT JOIN tbl_order_detail od ON o.trans_id = od.trans_id
         WHERE o.email = ?
         GROUP BY o.trans_id
-        ORDER BY o.trans_id ASC
+        ORDER BY o.trans_id DESC
     ");
     $stmt->bind_param("s", $email);
     $stmt->execute();
